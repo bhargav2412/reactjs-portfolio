@@ -17,6 +17,9 @@ function About() {
         <div className="about-right">
           <div className="about-param">
             <p>
+              With over 7 years of hands-on experience in software development.
+            </p>
+            <p>
               Innovative Technologist: Passionate about exploring and mastering
               emerging technologies, I seek opportunities to drive innovative
               solutions and stay ahead of industry trends.

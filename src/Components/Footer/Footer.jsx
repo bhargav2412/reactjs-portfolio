@@ -7,13 +7,13 @@ function Footer() {
   return (
     <div id="footer" className="footer">
       <div className="footer-top">
-        <div className="footer-top-left">
+        {/* <div className="footer-top-left">
           <img src={logo} alt="" className="imgClass" />
           <p>
             I'm Bhargav Gohel, full-Stack developer based in India. With over 7
             years of hands-on experience in software development.
           </p>
-        </div>
+        </div> */}
         {/* <div className="footer-top-right">
           <div className="footer-email-input">
             <img src={user_icon} alt="" />
@@ -29,7 +29,7 @@ function Footer() {
       <hr />
       <div className="footer-bottom">
         <p className="footer-bottom-left">
-          © 2023 Bhargav Gohel. All rights reserved.
+          © 2025 Bhargav Gohel. All rights reserved.
         </p>
         <div className="footer-bottom-right">
           {/* <p>Term of Services</p>

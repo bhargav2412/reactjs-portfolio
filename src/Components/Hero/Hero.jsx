@@ -10,7 +10,6 @@ function Hero() {
       <h1>
         <span>I'm Bhargav Gohel,</span> Full-Stack developer based in India.
       </h1>
-      <p>With over 7 years of hands-on experience in software development.</p>
       <div className="hero-action">
         <div className="hero-connect">
           <AnchorLink href="#contact" className="anchor-link" offset={50}>
