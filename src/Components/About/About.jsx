@@ -68,11 +68,11 @@ function About() {
           <h1>40+</h1>
           <p>Projects Completed</p>
         </div>
-        <hr />
-        <div className="about-achievement">
+        {/* <hr /> */}
+        {/* <div className="about-achievement">
           <h1>10+</h1>
           <p>Happy Clients</p>
-        </div>
+        </div> */}
       </div>
     </div>
   );
