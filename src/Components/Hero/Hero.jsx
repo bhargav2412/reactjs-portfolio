@@ -10,7 +10,7 @@ function Hero() {
       <h1>
         <span>I'm Bhargav Gohel,</span> Full-Stack developer based in India.
       </h1>
-      <div className="hero-action">
+      {/* <div className="hero-action">
         <div className="hero-connect">
           <AnchorLink href="#contact" className="anchor-link" offset={50}>
             Connect with me
@@ -21,7 +21,7 @@ function Hero() {
             My resume
           </AnchorLink>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

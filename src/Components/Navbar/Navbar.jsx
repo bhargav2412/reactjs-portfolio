@@ -59,11 +59,11 @@ export const Navbar = () => {
           {menu === "contact" ? <img src={underline} alt="" /> : <> </>}
         </li>
       </ul>
-      <div className="nav-connect">
+      {/* <div className="nav-connect">
         <AnchorLink href="#contact" className="anchor-link" offset={50}>
           Connect with me
         </AnchorLink>
-      </div>
+      </div> */}
     </div>
   );
 };
