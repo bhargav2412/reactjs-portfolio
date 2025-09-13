@@ -5,6 +5,10 @@ import mywork_data from "../../assets/js/mywork_data";
 import arrow_icon from "../../assets/img/arrow_icon.svg";
 
 function MyWork() {
+  const handleShowMoreClick = () => {
+    window.open("https://github.com/bhargav2412", "_blank");
+  };
+
   return (
     <div id="work" className="mywork">
       <div className="mywork-title">
@@ -16,10 +20,14 @@ function MyWork() {
           return <img key={index} src={work.w_img} alt="" />;
         })}
       </div>
-      {/* <div className="mywork-showmore">
-        <p>Show More</p>
+      <div
+        className="mywork-showmore"
+        onClick={handleShowMoreClick}
+        style={{ cursor: "pointer" }}
+      >
+        <p>More Details</p>
         <img src={arrow_icon} alt="" />
-      </div> */}
+      </div>
     </div>
   );
 }

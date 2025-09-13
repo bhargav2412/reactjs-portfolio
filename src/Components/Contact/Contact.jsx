@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../assets/css/Contact.css";
 import theme_pattern from "../../assets/img/theme_pattern.svg";
 import mail_icon from "../../assets/img/mail_icon.svg";
@@ -7,27 +7,38 @@ import call_icon from "../../assets/img/call_icon.svg";
 import { toast } from "react-toastify";
 
 function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const onSubmit = async (event) => {
     event.preventDefault();
-    const formData = new FormData(event.target);
+    setIsSubmitting(true);
 
+    const formData = new FormData(event.target);
     formData.append("access_key", "520e75f8-5bc2-408c-83dd-7878b3b7684d");
 
     const object = Object.fromEntries(formData);
     const json = JSON.stringify(object);
 
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: json,
-    }).then((res) => res.json());
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: json,
+      }).then((res) => res.json());
 
-    if (res.success) {
-      toast.success("Thank you! Your message has been sent successfully.");
-      event.target.reset();
+      if (res.success) {
+        toast.success("Thank you! Your message has been sent successfully.");
+        event.target.reset();
+      } else {
+        toast.error("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -81,8 +92,12 @@ function Contact() {
             rows={8}
             required
           ></textarea>
-          <button type="submit" className="contact-submit">
-            Submit
+          <button
+            type="submit"
+            className="contact-submit"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </div>
