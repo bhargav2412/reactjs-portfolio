@@ -1,16 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BG Code</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap"
-      rel="stylesheet"
+    <title>Bhargav Gohel — Full-Stack Developer</title>
+    <meta
+      name="description"
+      content="Bhargav Gohel is a full-stack developer in Bengaluru, India with 8+ years of experience building web applications, APIs, dashboards and e-commerce sites."
     />
+    <meta name="author" content="Bhargav Gohel" />
+    <meta name="theme-color" content="#0b0b0f" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bhargav Gohel — Full-Stack Developer" />
+    <meta
+      property="og:description"
+      content="Custom web applications, APIs and dashboards built for performance and scale."
+    />
+    <meta name="twitter:card" content="summary" />
+
+    <script>
+      // Apply the saved or system colour theme before first paint to avoid a flash.
+      (function () {
+        var theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch (e) {}
+        if (!theme) {
+          theme = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+        }
+        document.documentElement.classList.toggle("dark", theme === "dark");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
