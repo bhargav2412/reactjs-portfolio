@@ -1,10 +1,153 @@
-* {
-  margin: 0;
-  padding: 0;
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------------------------------------------------------------
+   Design tokens. Components only reference the semantic names
+   (bg, surface, fg, muted, border, accent), so the whole palette
+   can be retuned here without touching JSX.
+---------------------------------------------------------------- */
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f4f4f5;
+  --border: #e4e4e7;
+  --fg: #18181b;
+  --muted: #52525b;
+  --accent: #be185d;
+  --ring: #db2777;
+  --grid-line: rgb(24 24 27 / 0.05);
+  color-scheme: light;
 }
-body {
-  height: 100vh;
-  background: #161513;
-  color: white;
-  font-family: "outfit";
+
+.dark {
+  --bg: #0b0b0f;
+  --surface: #131318;
+  --surface-2: #1c1c22;
+  --border: rgb(255 255 255 / 0.09);
+  --fg: #f4f4f5;
+  --muted: #a1a1aa;
+  --accent: #f472b6;
+  --ring: #f472b6;
+  --grid-line: rgb(255 255 255 / 0.04);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Outfit Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+
+  --color-brand-orange: #fb923c;
+  --color-brand-pink: #ec4899;
+  --color-brand-purple: #a855f7;
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@utility bg-brand {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-brand-orange),
+    var(--color-brand-pink) 50%,
+    var(--color-brand-purple)
+  );
+}
+
+@utility text-brand {
+  background-image: linear-gradient(
+    120deg,
+    var(--color-brand-orange),
+    var(--color-brand-pink) 50%,
+    var(--color-brand-purple)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-brand-pink) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
+}
+
+/* Scroll-reveal (see components/ui/Reveal.jsx) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-reveal="visible"] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
 }

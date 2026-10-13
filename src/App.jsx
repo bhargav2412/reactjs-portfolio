@@ -1,26 +1,29 @@
-import React from "react";
-import { Navbar } from "./Components/Navbar/Navbar";
-import Hero from "./Components/Hero/Hero";
-import About from "./Components/About/About";
-import Services from "./Components/Services/Services";
-import MyWork from "./Components/MyWork/MyWork";
-import Contact from "./Components/Contact/Contact";
-import Footer from "./Components/Footer/Footer";
-import { ToastContainer } from "react-toastify";
+import Footer from "./components/layout/Footer";
+import Navbar from "./components/layout/Navbar";
+import About from "./components/sections/About";
+import Contact from "./components/sections/Contact";
+import Hero from "./components/sections/Hero";
+import Projects from "./components/sections/Projects";
+import Services from "./components/sections/Services";
 
-const App = () => {
+export default function App() {
   return (
-    <div>
-      <Navbar></Navbar>
-      <Hero></Hero>
-      <About></About>
-      <Services></Services>
-      <MyWork></MyWork>
-      <Contact></Contact>
-      <Footer></Footer>
-      <ToastContainer />
-    </div>
+    <>
+      <a
+        href="#main"
+        className="sr-only z-[60] rounded-full bg-fg px-4 py-2 text-bg focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+      >
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main">
+        <Hero />
+        <About />
+        <Services />
+        <Projects />
+        <Contact />
+      </main>
+      <Footer />
+    </>
   );
-};
-
-export default App;
+}
